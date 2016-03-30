@@ -1,9 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>HTML5 text-level elements</title>
 </head>
 <body>
-  <h1>Hello world!</h1>
+  <h1>HTML5 text-level elements</h1>
+  <p>
+    Sometimes it is difficult to figure out the differences between text-level elements in HTML5. The folowing article explains the differences between some of them:
+      </p>
+
+    <ol>
+      <li>&lt;em&gt;</li>
+      <li>&lt;strong&gt;</li>
+      <li>&lt;b&gt;</li>
+      <li>&lt;i&gt;</li>
+    </ol>
+
+
+    <h2>Why use &lt;strong&gt;&lt;/strong&gt; vs &lt;b&gt;&lt;/b&gt;?</h2>
+
+    Strong is a logical state, and bold is a physical state. Logical states separate presentation from the content, and by doing so allow for it to be expressed in many different ways.
+
+    <h2>Why use &lt;em&gt;&lt;/em&gt; vs &lt;i&gt;&lt;/i&gt;?</h2>
+
+    The &lt;em&gt; tag represents stress emphasis of its contents, while the &lt;i&gt; tag represents text that is set off from the normal prose, such as the name of a movie or book, a foreign word, or when the text refers to the definition of a word instead of representing its semantic meaning.
+
+    <h2>Why use &lt;em&gt;&lt;/em&gt; vs &lt;strong&gt;&lt;/strong&gt;?</h2>
+
+    In HTML5, the element strong is described as representing "strong importance for its contents." This is an important distinction to make. While Emphasis is used to change the meaning of a sentence ("I <em>love</em> carrots" vs. "I love <em>carrots</em>"), Strong is used to give portions of a sentence added importance (e.g., "<strong>Warning!</strong> This is very dangerous."). Both Strong and Emphasis can be nested to increase the relative degree of importance or stress emphasis, respectively.
+
+
+
+    To sum up, use:
+    <ul>
+      <li><strong>em</strong> for text with stress emphasis</li>
+      <li><strong>strong</strong> for text with semantic importance</li>
+      <li><strong>b</strong> for text stylistically different from normal text, without conveying any special importance or relevance</li>
+      <li><strong>i</strong> for text with a different semantic meaning whose typical typographic representation is italicized</li>
+    </ul>
+
+
+    The text presented in this article is an excerpt of the HTML5 Mozilla documentation.
+    You can find more in <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/">this site</a>.
+
 </body>
 </html>
