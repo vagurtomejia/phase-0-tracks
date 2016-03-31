@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML5 table tags</title>
+</head>
+<body>
+
+<h1>Using HTML5 table tags</h1>
+<p>This is a simple table with header using <strong>caption</strong>, <strong>tr</strong>, <strong>th</strong>, and <strong>td</strong> tags: </p>
+
+<table border=1>
+  <caption>My simple table</caption>
+  <tr>
+    <th>those</th>
+    <th>are</th>
+    <th>headers</th>
+  </tr>
+
+  <tr>
+    <td>those</td>
+    <td>are</td>
+    <td>normal cells</td>
+  </tr>
+
+</table>
+
+<p>
+The table uses the <strong>border</strong> attribute which defines, in pixels, the size of the frame surrounding the table. If set to 0, it implies that the frame attribute is set to void. This attribute has been deprecated and the &lt;table&gt; element should be styled using CSS. So let's create the following tables without this attribute.
+</p>
+
+<p>This is a table with <strong>thead</strong>, <strong>tfoot</strong>, and <strong>tbody</strong> tags:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Header content 1</th>
+      <th>Header content 2</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>Footer content 1</td>
+      <td>Footer content 2</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>Body content 1</td>
+      <td>Body content 2</td>
+    </tr>
+  </tbody>
+</table>
+<p>The <strong>thead</strong> tag define a set of rows defining the head of the columns of the table. The <strong>tfoot</strong> defines a set of rows summarizing the columns of the table. And the <strong>tbody</strong> tag defines one or more &lt;tr&gt; element data-rows to be the body of its parent table element.
+</p>
+
+<p>This is a table with <strong>colgroup</strong> and <strong>col</strong> tags:</p>
+<table>
+  <caption>List of cities I would like to visit</caption>
+  <colgroup>
+      <col style="background-color: #C0C0C0">
+      <col span="2">
+  </colgroup>
+  <tr>
+    <th>Cities</th>
+    <th>Country</th>
+    <th>Why?</th>
+  </tr>
+  <tr>
+    <td>San Cristobal</td>
+    <td>Mexico</td>
+    <td>Meet a friend</td>
+  </tr>
+  <tr>
+    <td>Bangkok</td>
+    <td>Thailand</td>
+    <td>Beautiful landscapes</td>
+  </tr>
+</table>
+<p>The <strong>colgroup</strong> tag defines a group of columns within a table.</p>
+<p>The <strong>colgroup</strong> tag defines a column within a table and is used for defining common semantics on all common cells.
+
+  <aside>
+    This article is based on the HTML5 Mozilla Documentation. You can find more information about the table elements <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">here</a>.
+
+  </aside>
+
+</body>
+</html>
