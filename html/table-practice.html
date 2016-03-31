@@ -78,9 +78,35 @@ The table uses the <strong>border</strong> attribute which defines, in pixels, t
 <p>The <strong>colgroup</strong> tag defines a group of columns within a table.</p>
 <p>The <strong>colgroup</strong> tag defines a column within a table and is used for defining common semantics on all common cells.
 
-  <aside>
-    This article is based on the HTML5 Mozilla Documentation. You can find more information about the table elements <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">here</a>.
+  <p>This is a fancy table with span rows and cols:</p>
+  <table border=1>
+    <tr>
+      <th>Col 1</th>
+      <th>Col 2</th>
+      <th colspan=2>Col 3</th>
+      <th>Col 4</th>
+    </tr>
+    <tr>
+      <td rowspan=2>cell 1</td>
+      <td>cell 2</td>
+      <td>cell 3</td>
+      <td>cell 4</td>
+      <td>cell 5</td>
+    </tr>
+    <tr>
+      <td>cell 6</td>
+      <td>cell 7</td>
+      <td>cell 8</td>
+      <td>cell 9</td>
+    </tr>
 
+  </table>
+
+
+  <aside>
+    <p>
+    This article is based on the HTML5 Mozilla Documentation. You can find more information about the table elements <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">here</a>.
+    </p>
   </aside>
 
 </body>
