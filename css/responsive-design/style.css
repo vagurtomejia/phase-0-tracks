@@ -12,9 +12,8 @@ cite {
 #external-links ul {
   list-style-type: none;
   padding-left: 0px;
-  width: 200px;
+  width: 50%;
   vertical-align: middle;
-
 }
 
 /* you're welcome to edit the
@@ -35,11 +34,24 @@ figcaption {
 }
 
 body {
-  width: 960px;
-
+  max-width: 960px;
 }
 
 main {
-  width: 756px;
+  width: 80%;
   display: inline-block;
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 90%;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    font-size: .11em;
+  }
+  img {
+    width:20%;
+  }
 }
