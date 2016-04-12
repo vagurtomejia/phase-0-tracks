@@ -1,0 +1,21 @@
+**4.2 Algorithms**
+
+**Release 0: Equip Your New Robot**
+
+-Wait until you know to which floor you want to go
+-If the number of the desired floor equals the number of the floor where you currently are
+    don't do anything. You do not need to take the elevator
+-Otherwise:
+    -if the number of the floor is > than the floor where you currently are
+        push the "up" button
+    -otherwise,
+        push the "down" button
+    -Wait until the doors of the elevator opens
+    -Get in the elevator
+    -Push the button corresponding to the desired floor
+    -Push the "close doors" button
+    -Wait until the displayed floor number into the elevator equals your desired floor AND the doors are opened
+    -exit the elevator
+
+
+
