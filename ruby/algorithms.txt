@@ -18,4 +18,34 @@
     -exit the elevator
 
 
+**Release 1: Find a Real-Life Algorithm**
+-Sleep until your clock alarm rings OR your husband snores loudly OR you want to pee OR an out-of-tune drunk sings in the street
+-if your clock alarm rings
+    -Until it stops ringing:
+        -push the "snooze" button
+        -nap
+-otherwise,
+        -if you want to pee
+            -get out of your bed
+            -go to the bathroom
+            -pee
+            -wash your hands
+            -go back to your room
+            -get into the bed
+
+        -if your husband snores loudly:
+            -Until he stops snoring:
+                -stick him with your pillow
+            -adjust again your pillow
+   
+        -if an out-of-tune drunk sings in the street
+            -get out of your bed
+            -ask him to stop
+            -if he does not stop:
+                -throw him a bucket of ice cold water
+                -smile
+                -go back to bed
+
+-continue sleeping :-) # yes!
+
 
