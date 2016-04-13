@@ -1,3 +1,23 @@
-body {
-  background-color: pink; #just to be sure it works
+header {
+  width: 400px;
+  color: green;
+}
+
+.column-1 {
+  width: 40%;
+  display: inline-block;
+  background-color: yellow;
+  font-family: verdana;
+}
+
+.column-2 {
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+  background-color: red;
+  font-family: verdana;
+}
+
+#img-footer {
+  width: 50px;
 }
