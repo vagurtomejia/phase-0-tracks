@@ -1,3 +1,4 @@
+
 def encrypt (unencripted_string)
   #find the lenght of the string
   string_lenght = unencripted_string.length
@@ -42,5 +43,27 @@ def decrypt (undecrypted_string)
   #print output/result
 end
 
-puts encrypt("zed")
-puts decrypt("afe")
+#Asks User if he would like to decrypt or encrypt a password
+puts "Hello! Would you like to decrypt or encrypt a password?"
+encryption_choice = gets.chomp
+
+puts "You chose #{encryption_choice}"
+
+#Asks User for Password
+puts "What is the password?"
+
+password = gets.chomp
+puts "Your password is #{password}"
+
+#Encrypts or Decrypts Given Password
+if encryption_choice == "encrypt"
+  result = encrypt(password)
+else
+  result = decrypt(password)
+end
+
+#Prints Result to Screen
+puts "Here is your result: #{result}"
+
+#NOTE: puts decrypt(encrypt("swordfish")) Nesting Methods is a valid #option. In this example, first the encrypt method will operate on  #"swordfish" giving "txpsegjti." Next, decrypt will use the output of
+#encrypt, which is "txpsegjti," ultimately resulting in the output #"swordfish"
