@@ -1,6 +1,7 @@
 #METHODS DEFINITION
 
-# asks for employee's data, analyse it (is the employee a vampire?) and return the result
+# asks for employee's data, analyse it (is the employee a vampire?)
+#and return the result
 def vampire_detection
   valid_input = false;
   while !valid_input
@@ -11,7 +12,7 @@ def vampire_detection
     if res != nil
       valid_input = true
     else
-      puts "Seriously? Come on! This is not even a name!"
+      puts "Seriously? Come on! This is not even a name! Let's try again."
     end
   end
 
@@ -45,7 +46,7 @@ def vampire_detection
 
   current_year = 2016
   computed_age = current_year - employee_birth_year
-  correct_age = computed_age == employee_age ? true : false
+  correct_age = (computed_age == employee_age) ? true : false
 
   result_of_survey = ""
   if correct_age && employee_likes_garlic && employee_needs_insurance
@@ -59,7 +60,6 @@ def vampire_detection
   else
     result_of_survey = "Results inconclusive."
   end
-
   result_of_survey
 end
 
@@ -71,11 +71,10 @@ nb_current_employee = 1
 
 while nb_current_employee <= nb_employees
   puts "Vampire-detection survey for the employee number #{nb_current_employee}"
-  puts "******************************************************"
+  puts "**************************************************"
   detection_result = vampire_detection
-  puts "Our vampire-detection program indicates the following result for this employee: #{detection_result}\n\n"
+  puts "\nOur vampire-detection program indicates the following result for this employee: #{detection_result}\n\n"
   nb_current_employee += 1
 end
-puts "Thank you for using our vampire-detection program!"
-
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends! :-)"
 
