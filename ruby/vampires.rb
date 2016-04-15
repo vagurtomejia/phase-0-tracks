@@ -29,6 +29,20 @@ def vampire_detection
   employee_needs_insurance = gets.chomp
   employee_needs_insurance == "y" ? employee_needs_insurance = true : employee_needs_insurance = false
 
+  puts "Please list your allergies one at a time and type \"done\" when finished."
+  allergy_is_sunshine = false
+  allergies_are_finished = false
+  until allergy_is_sunshine || allergies_are_finished
+    puts "Your allergy: "
+    allergy = gets.chomp
+    if allergy == "sunshine"
+      allergy_is_sunshine = true
+      return "Probably a vampire."
+    elsif allergy == "done"
+      allergies_are_finished = true
+    end
+  end
+
   current_year = 2016
   computed_age = current_year - employee_birth_year
   correct_age = computed_age == employee_age ? true : false
