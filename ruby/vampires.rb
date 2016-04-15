@@ -60,7 +60,7 @@ def vampire_detection
   else
     result_of_survey = "Results inconclusive."
   end
-  result_of_survey
+  return result_of_survey
 end
 
 
