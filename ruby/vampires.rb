@@ -1,3 +1,4 @@
+
 # Asking for employee's data
 valid_input = false;
 while !valid_input
@@ -7,6 +8,8 @@ while !valid_input
   res = name.match(/^[[:alpha:][:blank:]]+$/)
   if res != nil
     valid_input = true
+  else
+    puts "Seriously? Come on! This is not even a name!"
   end
 end
 
