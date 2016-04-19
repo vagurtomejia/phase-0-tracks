@@ -7,10 +7,8 @@
 #DEFINED METHODS
 def diplay_suspect_method(method_signature, method_call)
   puts "\n"
-  puts "Name and signature of the suspected method:"
-  puts method_signature
-  puts "Evidence:"
-  puts "result for the call of #{method_call}: "
+  puts "Suspected method signature: #{method_signature}"
+  puts "Evidence: the result for the call of #{method_call} is: "
 end
 
 #DRIVER CODE
@@ -57,7 +55,9 @@ puts "enhance".center(16, " ")
 # => “STOP! YOU’RE UNDER ARREST!”
 #suspects: upcase → new_str
 #AND upcase! → str or nil
+diplay_suspect_method("upcase → new_str", "Stop! You’re under arrest!\".upcase")
 puts "Stop! You’re under arrest!".upcase
+diplay_suspect_method("upcase! → new_str", "Stop! You’re under arrest!\".upcase!")
 puts "Stop! You’re under arrest!".upcase!
 
 
@@ -66,8 +66,12 @@ puts "Stop! You’re under arrest!".upcase!
 #suspect:
 #str + other_str → new_str
 #AND str << obj → str
+#AND concat(obj) → str
+diplay_suspect_method("str + other_str → new_str", "\"the usual\" + \" suspects\"")
 puts "the usual" + " suspects"
+diplay_suspect_method("str + other_str → new_str", "\"the usual\" << \" suspects\"")
 puts "the usual" << " suspects"
+diplay_suspect_method("concat(obj) → str", "\"the usual\".concat(\" suspects\")")
 puts "the usual".concat(" suspects")
 
 
@@ -80,11 +84,17 @@ puts "the usual".concat(" suspects")
 #AND gsub!(pattern, replacement) → str or nil
 #AND insert(index, other_str) → str
 #AND prepend(other_str) → str
+diplay_suspect_method("sub(pattern, replacement) → new_str", "\" suspects\".sub(\" \", \"the usual \")")
 puts " suspects".sub(" ", "the usual ")
+diplay_suspect_method("sub!(pattern, replacement) → str or nil", "\" suspects\".sub!(\" \", \"the usual \")")
 puts " suspects".sub!(" ", "the usual ")
+diplay_suspect_method("gsub(pattern, replacement) → new_str", "\" suspects\".gsub(\" \", \"the usual \")")
 puts " suspects".gsub(" ", "the usual ")
+diplay_suspect_method("gsub!(pattern, replacement) → str or nil", "\" suspects\".gsub!(\" \", \"the usual \")")
 puts " suspects".gsub!(" ", "the usual ")
+diplay_suspect_method("insert(index, other_str) → str", "\" suspects\".insert(0, \"the usual\")")
 puts " suspects".insert(0, "the usual")
+diplay_suspect_method("prepend(other_str) → str","\" suspects\".prepend(\"the usual\")")
 puts " suspects".prepend("the usual")
 
 # "The case of the disappearing last letter".<???>
