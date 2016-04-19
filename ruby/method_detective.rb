@@ -104,8 +104,11 @@ puts " suspects".prepend("the usual")
 #AND chop! → str or nil
 #AND slice(range) → new_str or nil
 #AND slice!(range) → new_str or nil
+diplay_suspect_method("chop → new_str", "\"The case of the disappearing last letter\".chop")
 puts "The case of the disappearing last letter".chop
+diplay_suspect_method("chop! → new_str", "\"The case of the disappearing last letter\".chop!")
 puts "The case of the disappearing last letter".chop!
+diplay_suspect_method("slice(range) → new_str or nil", "\"The case of the disappearing last letter\".slice(0..38)")
 puts "The case of the disappearing last letter".slice(0..38)
 
 # "The mystery of the missing first letter".<???>
@@ -118,26 +121,37 @@ puts "The case of the disappearing last letter".slice(0..38)
 #slice(range) → new_str or nil
 #slice!(range) → new_str or nil
 
+diplay_suspect_method("delete([other_str]+) → new_str","\"The mystery of the missing first letter\".delete(\"T\")")
 puts "The mystery of the missing first letter".delete("T")
+diplay_suspect_method("delete!([other_str]+) → str or nil","\"The mystery of the missing first letter\".delete!(\"T\")")
 puts "The mystery of the missing first letter".delete!("T")
+diplay_suspect_method("slice(start, length) → new_str or nil","\"The mystery of the missing first letter\".slice(1, 40)")
 puts "The mystery of the missing first letter".slice(1, 40)
+diplay_suspect_method("slice!(start, length) → new_str or nil","\"The mystery of the missing first letter\".slice!(1, 40)")
 puts "The mystery of the missing first letter".slice!(1, 40)
+diplay_suspect_method("slice(range) → new_str or nil","\"The mystery of the missing first letter\".slice(1..40)")
 puts "The mystery of the missing first letter".slice(1..40)
+diplay_suspect_method("slice!(range) → new_str or nil","\"The mystery of the missing first letter\".slice!(1..40)")
 puts "The mystery of the missing first letter".slice!(1..40)
 
 
 # "Elementary  ,    my   dear      Watson!".<???>
 # => “Elementary, my dear Watson!”
 #suspect:
-#tr(from_str, to_str) => new_str
-#AND tr!(from_str, to_str) → str or nil
+#tr_s(from_str, to_str) → new_str
+#AND tr_s!(from_str, to_str) → str or nil
 #AND gsub(pattern, replacement) → new_str
 #AND gsub!(pattern, replacement) → str or nil
 #AND squeeze([other_str]*) → new_str
+diplay_suspect_method("tr_s(from_str, to_str) → new_str","\"Elementary  ,    my   dear      Watson!\".tr_s(\" \",\" \").gsub(/\\s*,/, \",\")")
 puts "Elementary  ,    my   dear      Watson!".tr_s(" "," ").gsub(/\s*,/, ",")
+diplay_suspect_method("tr_s!(from_str, to_str) → new_str","\"Elementary  ,    my   dear      Watson!\".tr_s!(\" \",\" \").gsub(/\\s*,/, \",\")")
 puts "Elementary  ,    my   dear      Watson!".tr_s!(" "," ").gsub(/\s*,/, ",")
+diplay_suspect_method("gsub(pattern, replacement) → new_str","\"Elementary  ,    my   dear      Watson!\".gsub(/\\s{1,}/, \" \").gsub(/\\s*,/, \",\")")
 puts "Elementary  ,    my   dear      Watson!".gsub(/\s{1,}/, " ").gsub(/\s*,/, ",")
-puts "Elementary  ,    my   dear      Watson!".gsub(/\s{1,}/, " ").gsub!(/\s*,/, ",")
+diplay_suspect_method("gsub!(pattern, replacement) → str or nil","\"Elementary  ,    my   dear      Watson!\".gsub!(/\\s{1,}/, \" \").gsub!(/\\s*,/, \",\")")
+puts "Elementary  ,    my   dear      Watson!".gsub!(/\s{1,}/, " ").gsub!(/\s*,/, ",")
+diplay_suspect_method("squeeze([other_str]*) → new_str","\"Elementary  ,    my   dear      Watson!\".squeeze(\" \").gsub(/\\s*,/, \",\")")
 puts "Elementary  ,    my   dear      Watson!".squeeze(" ").gsub(/\s*,/, ",")
 
 #"z".<???>
@@ -145,6 +159,7 @@ puts "Elementary  ,    my   dear      Watson!".squeeze(" ").gsub(/\s*,/, ",")
 # (What is the significance of the number 122 in relation to the character z?)
 #suspect:
 #each_codepoint → an_enumerator
+diplay_suspect_method("each_codepoint → an_enumerator","puts \"z\".each_codepoint.first")
 puts "z".each_codepoint.first
 
 
@@ -152,4 +167,5 @@ puts "z".each_codepoint.first
 #=> 4
 #suspect:
 #count([other_str]+) → fixnum
+diplay_suspect_method("count([other_str]+) → fixnum","\"How many times does the letter ‘a’ appear in this string?\".count \"a\"")
 puts "How many times does the letter ‘a’ appear in this string?".count "a"
