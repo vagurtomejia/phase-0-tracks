@@ -4,8 +4,19 @@
 # When there's more than one suspect who could have
 # committed the crime, add additional calls to prove it.
 
-# “iNvEsTiGaTiOn”.<???>
+#swapcase → new_str and swapcase! → str or nil
+puts "Mr prosecutor, you know that some methods have been roaming around causing trouble in the last few weeks! I have found the suspects and I bring you here the evidence for you to be able to condemn and compensate the poor strings, victims of all those awfull crimes! "
+
+# "iNvEsTiGaTiOn".swapcase
 # => “InVeStIgAtIoN”
+puts "First suspect: brothers swapcase and swapcase!"
+puts "swapcase → new_str and swapcase! → str or nil"
+puts "Evidence:"
+puts "result for the call of \"iNvEsTiGaTiOn\".swapcase: "
+puts "iNvEsTiGaTiOn".swapcase
+puts "result for the call of \"iNvEsTiGaTiOn\".swapcase!: "
+puts "iNvEsTiGaTiOn".swapcase
+
 
 # “zom”.<???>
 # => “zoom”
@@ -32,7 +43,7 @@
 # => “Elementary, my dear Watson!”
 
 #“z”.<???>
-# => 122 
+# => 122
 # (What is the significance of the number 122 in relation to the character z?)
 
 #“How many times does the letter ‘a’ appear in this string?”.<???>
