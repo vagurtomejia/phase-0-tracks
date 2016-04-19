@@ -78,34 +78,68 @@ puts "the usual".concat(" suspects")
 #AND sub!(pattern, replacement) → str or nil
 #AND gsub(pattern, replacement) → new_str
 #AND gsub!(pattern, replacement) → str or nil
+#AND insert(index, other_str) → str
+#AND prepend(other_str) → str
 puts " suspects".sub(" ", "the usual ")
 puts " suspects".sub!(" ", "the usual ")
 puts " suspects".gsub(" ", "the usual ")
 puts " suspects".gsub!(" ", "the usual ")
-
+puts " suspects".insert(0, "the usual")
+puts " suspects".prepend("the usual")
 
 # "The case of the disappearing last letter".<???>
 # => “The case of the disappearing last lette”
 #suspect:
 #chop → new_str
+#AND chop! → str or nil
+#AND slice(range) → new_str or nil
+#AND slice!(range) → new_str or nil
 puts "The case of the disappearing last letter".chop
+puts "The case of the disappearing last letter".chop!
+puts "The case of the disappearing last letter".slice(0..38)
 
 # "The mystery of the missing first letter".<???>
 # => “he mystery of the missing first letter”
 #suspect:
+#delete([other_str]+) → new_str
+#delete!([other_str]+) → str or nil
+#slice(start, length) → new_str or nil
+#slice!(fixnum, fixnum) → new_str or nil
+#slice(range) → new_str or nil
+#slice!(range) → new_str or nil
+
+puts "The mystery of the missing first letter".delete("T")
+puts "The mystery of the missing first letter".delete!("T")
+puts "The mystery of the missing first letter".slice(1, 40)
+puts "The mystery of the missing first letter".slice!(1, 40)
+puts "The mystery of the missing first letter".slice(1..40)
+puts "The mystery of the missing first letter".slice!(1..40)
 
 
 # "Elementary  ,    my   dear      Watson!".<???>
 # => “Elementary, my dear Watson!”
 #suspect:
-
+#tr(from_str, to_str) => new_str
+#AND tr!(from_str, to_str) → str or nil
+#AND gsub(pattern, replacement) → new_str
+#AND gsub!(pattern, replacement) → str or nil
+#AND squeeze([other_str]*) → new_str
+puts "Elementary  ,    my   dear      Watson!".tr_s(" "," ").gsub(/\s*,/, ",")
+puts "Elementary  ,    my   dear      Watson!".tr_s!(" "," ").gsub(/\s*,/, ",")
+puts "Elementary  ,    my   dear      Watson!".gsub(/\s{1,}/, " ").gsub(/\s*,/, ",")
+puts "Elementary  ,    my   dear      Watson!".gsub(/\s{1,}/, " ").gsub!(/\s*,/, ",")
+puts "Elementary  ,    my   dear      Watson!".squeeze(" ").gsub(/\s*,/, ",")
 
 #"z".<???>
 # => 122
 # (What is the significance of the number 122 in relation to the character z?)
 #suspect:
+#each_codepoint → an_enumerator
+puts "z".each_codepoint.first
 
 
 #"How many times does the letter ‘a’ appear in this string?".<???>
 #=> 4
 #suspect:
+#count([other_str]+) → fixnum
+puts "How many times does the letter ‘a’ appear in this string?".count "a"
