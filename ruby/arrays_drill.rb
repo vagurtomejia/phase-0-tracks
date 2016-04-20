@@ -1,4 +1,14 @@
 
+#METHODS DEFINITION
+
+# method that takes three names as parameters and returns an array of those names
+# build_diversity_names("Grumpy", "Pocahontas", "White") would return ["Grumpy", "Pocahontas", "White"].
+def build_diversity_names(first_name, middle_name, last_name)
+  diversity_name = [first_name, middle_name, last_name]
+end
+
+#DRIVER CODE
+
 # Initialize an empty array and store it in a variable (you can choose the name). Print the variable using p.
 dwarfs = Array.new #or dwarfs = []
 p dwarfs
@@ -25,4 +35,13 @@ female_protagonist = ["Cinderella", "Rapunzel", "Belle", "Pocahontas", "Jasmine"
 # Add the two arrays together and store them in a new variable. Print the new array.
 diversity_couples = dwarfs + female_protagonist
 p diversity_couples
+
+puts "\nResult for the call of build_diversity_names(\"Grumpy\", \"Pocahontas\", \"White\")="
+p build_diversity_names("Grumpy", "Pocahontas", "White")
+
+puts "Result for the call of build_diversity_names(1, \"two\", nil) ="
+puts "(... What? Integers and strings should be able to marry each other in a perfect diversity-respectful world :-) )"
+p build_diversity_names(1, "two", nil)
+
+
 
