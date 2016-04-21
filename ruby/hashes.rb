@@ -49,18 +49,33 @@ client_answer = client_answer == "y" ? true : false
 client_data[:feng_shui] = client_answer
 
 # Print client_data back out to the screen
-p client_data
-puts "Here is your client's data:"
-client_data.each {|key, value| puts "#{key} : #{value}" }
+puts "\nHere is your client's data:"
+client_data.each {|key, value| puts "#{key} : #{value}"}
 
 # As the user if he/she wants to update some data:
-# - Type "none" if the no data need to be update
-# - Type the corresponding key if the data need to be updates
+# - Type "none" if no data needs to be update
+# - Type the corresponding key if the data needs to be updated
+puts "\nDo you want to update your client's data? Please Type \"none\" if no data needs to be update, otherwise type the corresponding key."
 #   -display the keys
+possible_keys = ""
+client_data.each_key {|key| possible_keys += "#{key.to_s}, " }
+possible_keys.chop!.chop!
+puts "The possible keys you can update are #{possible_keys}."
 
+client_answer = gets.chomp
 # if the user response is "none", do not do anything
+if client_answer == "none"
 # otherwise,
+else
 #   -ask the user to input a value
+  puts "What is the new data value for #{client_answer}?"
+  client_value = gets.chomp
 #   -store the value at the corresponding key
+  client_data[client_answer.to_sym] = client_value
+end
 
 # Print client_data back out to the screen
+puts "\nHere is your client's data:"
+client_data.each {|key, value| puts "#{key} : #{value}"}
+
+puts "\nThank you for using our program. Good bye!"
