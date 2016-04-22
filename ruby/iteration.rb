@@ -51,3 +51,27 @@ end
 
 puts "\nPrinting meaningful_words_authors after iteration using \".map!\": #{meaningful_words_authors}"
 
+#Release 2
+
+#delete from Array with condition
+numbers = [5, 3, 9, 4, 7]
+numbers.delete_if {|number| number < 5 }
+p numbers
+
+letters = ['a', 'b', 'c', 'd', 'e', 'f']
+letters.keep_if { |letter| letter =~ /[aeiou]/ }
+p letters
+
+#filter from Array with condition
+numbers = [5, 3, 9, 4, 7]
+letters = ['a', 'b', 'c', 'd', 'e', 'f']
+
+p numbers.bsearch {|x| x >= 5 }
+p numbers
+
+p letters.select { |v| v =~ /[aeiou]/ }
+p letters
+
+p letters.reject { |v| v =~ /[aeiou]/ }
+p letters
+
