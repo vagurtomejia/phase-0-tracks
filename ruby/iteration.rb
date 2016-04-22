@@ -13,17 +13,23 @@ say_magic_word { |word| puts "The word is #{word}!"}
 
 
 #Release 1
-meaningful_words = {"Mary Poppins" => "supercalifragilisticexpialidocious", "Cinderella" => "Bibbidi-Bobbidi-Boo", "Jack and the Beanstalk" => "Fee-fi-fo-fum!", "Harry Potter" => "Wingardium Leviosa"}
+meaningful_words = {"Mary Poppins" => "Supercalifragilisticexpialidocious", "Cinderella" => "Bibbidi-Bobbidi-Boo", "Jack and the Beanstalk" => "Fee-fi-fo-fum!", "Harry Potter" => "Wingardium Leviosa"}
 
 meaningful_words_authors = ["Mary Poppins", "Fairy Godmother", "Blunderbore", "Hermione Granger"]
 
+puts "Printing meaningful_words before iteration using \"each\": #{meaningful_words}"
+puts "Printing meaningful_words_authors before iteration using \"each\": #{meaningful_words_authors}"
 
-p meaningful_words
-p meaningful_words_authors
-#p meaningful_words["Mary Poppins"]
+puts "\nThe most meaningful words ever pronounced are: "
+meaningful_words.each { |word_key, word_value| puts "#{word_value} in #{word_key}" }
+
+puts "\nThe brilliant authors of those meaningful words are (respectively): "
+meaningful_words_authors.each { |author| puts "#{author}" }
+
+puts "\nPrinting meaningful_words after iteration using \"each\": #{meaningful_words}"
+puts "Printing meaningful_words_authors after iteration using \"each\": #{meaningful_words_authors}"
 
 
-# supercalifragilisticexpialidocious - Mary Poppins
-# Hermione Granger Wingardium Leviosa
-# Bibbidi-Bobbidi-Boo Fairy Godmother - Cinderella
-# Fee-fi-fo-fum!, -Jack and the Beanstalk - Blunderbore.
+# puts "Printing meaningful_words after iteration using \"map\": #{meaningful_words}"
+# puts "Printing meaningful_words_authors after iteration using \"map\": #{meaningful_words_authors}"
+
