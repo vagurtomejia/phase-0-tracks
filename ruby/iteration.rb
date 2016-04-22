@@ -52,26 +52,24 @@ end
 puts "\nPrinting meaningful_words_authors after iteration using \".map!\": #{meaningful_words_authors}"
 
 #Release 2
+puts "\n"
+#filter from Array with condition
+p meaningful_words_authors.select {|author| author != "MARY POPPINS"}
+p meaningful_words_authors.reject {|author| author == "BLUNDERBORE"}
 
 #delete from Array with condition
-numbers = [5, 3, 9, 4, 7]
-numbers.delete_if {|number| number < 5 }
-p numbers
+meaningful_words_authors.delete_if {|author| author.length < 13 }
+p meaningful_words_authors
 
-letters = ['a', 'b', 'c', 'd', 'e', 'f']
-letters.keep_if { |letter| letter =~ /[aeiou]/ }
-p letters
+meaningful_words_authors.keep_if {|author| author == "FAIRY GODMOTHER" }
+p meaningful_words_authors
 
-#filter from Array with condition
-numbers = [5, 3, 9, 4, 7]
-letters = ['a', 'b', 'c', 'd', 'e', 'f']
+#filter from Hash with condition
+p meaningful_words.select {|k,v| k == "Mary Poppins"}
+p meaningful_words.reject {|k,v| k == "Mary Poppins"}
 
-p numbers.bsearch {|x| x >= 5 }
-p numbers
-
-p letters.select { |v| v =~ /[aeiou]/ }
-p letters
-
-p letters.reject { |v| v =~ /[aeiou]/ }
-p letters
-
+#delete from Hash with condition
+meaningful_words.delete_if {|k,v| k == "Harry Potter"}
+p meaningful_words
+meaningful_words.keep_if {|k,v| v != "Supercalifragilisticexpialidocious"}
+p meaningful_words
