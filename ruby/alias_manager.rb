@@ -47,4 +47,12 @@ end
 
 #DRIVER CODE
 
-p generate_alias("Felicia Torres")
+puts "Hello, brave agent! And welcome to Fake-Name-Generator 1.0!"
+user_answer = ""
+while user_answer != "quit" do
+  puts "What is your real name?"
+  user_answer = gets.chomp
+  if user_answer != "quit"
+    puts "Your alias name from now on will be \'#{generate_alias(user_answer)}\'. Congrats!"
+  end
+end
