@@ -1,12 +1,11 @@
-# SPECIES ------------------------
+# CLASS ------------------------
 # Puppy
 
 # CHARACTERISTICS ----------------
 # Name: varies
 # Color: varies
-# Friendly: yes
-# Name of the master: varies
+# Name of master: varies
 
 # BEHAVIOR -----------------------
 # Jump
-# Run
+# Fetch
