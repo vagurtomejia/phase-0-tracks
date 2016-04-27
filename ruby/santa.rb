@@ -4,7 +4,7 @@ class Santa
     puts "Initializing Santa instance ..."
     @gender = gender
     @ethnicity = ethnicity
-    reindeer_ranking =["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
+    @reindeer_ranking =["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
     @age = 0
   end
   def speak
@@ -12,6 +12,23 @@ class Santa
   end
   def eat_milk_and_cookies(cookie_type)
     puts "That was a good #{cookie_type}!"
+  end
+  def celebrate_birthday
+    @age += 1
+  end
+  def get_mad_at(reindeer_name)
+    @reindeer_ranking = @reindeer_ranking.delete_if { |reindeer| reindeer_name == reindeer }.push(reindeer_name)
+  end
+  #getters
+  def age
+    @age
+  end
+  def ethnicity
+    @ethnicity
+  end
+  #setters
+  def gender=(gender)
+    @gender = gender
   end
 end
 
@@ -27,7 +44,11 @@ example_genders.length.times do |i|
 end
 
 santas.each do |santa|
-  puts "Santa #{} is .."
+  puts "Santa #{} is #{santa.age} years old and is #{santa.ethnicity}."
   santa.speak
+  santa.celebrate_birthday
+  santa.get_mad_at("Comet")
+  santa.gender = "N/A"
+  puts "Santa #{} is #{santa.age} years old and is #{santa.ethnicity}."
 end
 
