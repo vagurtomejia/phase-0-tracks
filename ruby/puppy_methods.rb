@@ -60,9 +60,18 @@ woufwouf.pee("the Christmas tree")
 
 #BuzzLightyear instance test
 puts "\nCalling BuzzLightyear instance methods: "
-buzz = BuzzLightyear.new
-buzz.shoot_laser("Evil Emperor Zurg")
-buzz.say_catchphrase(3)
-buzz.fly
-buzz.protect_galaxy
+my_buzzes = {}
+
+50.times do |i|
+  my_buzzes[i] = BuzzLightyear.new
+end
+my_buzzes.each do |i, buzz|
+  puts "\nCalling instance methods of Buzz #{i}: "
+  buzz.shoot_laser("Evil Emperor Zurg")
+  buzz.say_catchphrase(2)
+  buzz.fly
+  buzz.protect_galaxy
+end
+
+
 
