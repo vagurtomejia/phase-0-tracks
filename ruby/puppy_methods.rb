@@ -26,9 +26,43 @@ class Puppy
 
 end
 
+class BuzzLightyear
+
+  def initialize
+    @catchphrase = "To infinity and beyond!"
+  end
+
+  def shoot_laser(target)
+    puts "I'm shooting my laser at #{target}!"
+  end
+
+  def say_catchphrase(number)
+    number.times {puts @catchphrase}
+  end
+
+  def fly
+    puts "I'm flying!"
+  end
+
+  def protect_galaxy
+    puts "I'm sworn to protect the galaxy from the Evil Emperor Zurg!"
+  end
+end
+
+#Puppy instance test
+puts "\nCalling Puppy instance methods: "
 woufwouf = Puppy.new
 woufwouf.fetch("Buzz Lightyear")
 woufwouf.speak(4)
 woufwouf.roll_over
 p woufwouf.dog_years(2)
 woufwouf.pee("the Christmas tree")
+
+#BuzzLightyear instance test
+puts "\nCalling BuzzLightyear instance methods: "
+buzz = BuzzLightyear.new
+buzz.shoot_laser("Evil Emperor Zurg")
+buzz.say_catchphrase(3)
+buzz.fly
+buzz.protect_galaxy
+
