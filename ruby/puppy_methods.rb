@@ -62,9 +62,7 @@ woufwouf.pee("the Christmas tree")
 puts "\nCalling BuzzLightyear instance methods: "
 my_buzzes = {}
 
-50.times do |i|
-  my_buzzes[i] = BuzzLightyear.new
-end
+50.times { |i| my_buzzes[i] = BuzzLightyear.new }
 my_buzzes.each do |i, buzz|
   puts "\nCalling instance methods of Buzz #{i}: "
   buzz.shoot_laser("Evil Emperor Zurg")
