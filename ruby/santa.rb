@@ -1,5 +1,8 @@
 
 class Santa
+  attr_reader :age, :ethnicity
+  attr_accessor :gender
+
   def initialize(gender, ethnicity)
     puts "Initializing Santa instance ..."
     @gender = gender
@@ -19,17 +22,6 @@ class Santa
   def get_mad_at(reindeer_name)
     @reindeer_ranking = @reindeer_ranking.delete_if { |reindeer| reindeer_name == reindeer }.push(reindeer_name)
   end
-  #getters
-  def age
-    @age
-  end
-  def ethnicity
-    @ethnicity
-  end
-  #setters
-  def gender=(gender)
-    @gender = gender
-  end
 end
 
 # my_santa = Santa.new
@@ -44,11 +36,11 @@ example_genders.length.times do |i|
 end
 
 santas.each do |santa|
-  puts "Santa #{} is #{santa.age} years old and is #{santa.ethnicity}."
+  puts "Santa #{} is #{santa.age} years old and is #{santa.ethnicity} and #{santa.gender}."
   santa.speak
   santa.celebrate_birthday
   santa.get_mad_at("Comet")
   santa.gender = "N/A"
-  puts "Santa #{} is #{santa.age} years old and is #{santa.ethnicity}."
+  puts "Santa #{} is #{santa.age} years old and is #{santa.ethnicity} and #{santa.gender}."
 end
 
