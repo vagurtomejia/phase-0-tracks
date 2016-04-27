@@ -7,3 +7,5 @@ class Puppy
 
 end
 
+woufwouf = Puppy.new
+woufwouf.fetch("Buzz Lightyear")
