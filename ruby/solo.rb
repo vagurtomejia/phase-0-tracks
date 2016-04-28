@@ -86,7 +86,7 @@ class Fortune_cookie
   end
 
   def prepare_batter
-    preparation = "Preparing batter"
+    preparation = "..Preparing batter"
     case preparation_option
       when "vegan" then preparation += " with soft tofu instead of eggs and milk."
       when "gluten-free" then preparation += " with rice and corn flour instead of wheat flour."
@@ -95,15 +95,56 @@ class Fortune_cookie
     puts preparation
   end
   def bake
-    puts "Zsssshhhhhhzzzzz ...baking. *sizzle*"
+    puts "...Baking ...Zsssshhhhhhzzzzz ... *sizzle*"
   end
   def tell_fortune(number)
-    number.times { puts }
+    number.times { puts "The fortune cookie tells you: \n\"#{@sentence}\"" }
   end
 
 end
 
-dessert = Fortune_cookie.new(36, "spanish")
-dessert.preparation_option = "gluten-free"
-dessert.prepare_batter
-dessert.bake
+puts "Welcome to the Fortune Cookie Factory, the only place where you can make your own cookies to measure!\n"
+
+fortune_cookies = []
+make_cookie = ""
+while make_cookie != "n"
+  make_cookie = ""
+  while !["y","n"].include?(make_cookie)
+    puts "\nDo you want to order a made to measure cookie? (y/n)"
+    make_cookie = gets.chomp
+    make_cookie.downcase!
+  end
+  if make_cookie != "n"
+    age = ""
+    while !age.match(/[0-9]+/)
+      puts "How old is the person that will eat this fortune cookie?"
+      age = gets.chomp
+    end
+    languages_options = ["spanish","english"]
+    language = ""
+    while !languages_options.include?(language)
+      puts "Which is her/his language? Please type \"spanish\" or \"english\" (more languages will be available soon): "
+      language = gets.chomp
+    end
+    dessert = Fortune_cookie.new(age.to_i, language)
+    prepare_options = {"ok" => "vegan", "standard"  => "standard", "nogluten" => "gluten-free"}
+    prepare_option = ""
+    while !prepare_options.include?(prepare_option)
+      puts "Our fortune cookies are vegan. If you are ok with that please type \"ok\", otherwise type \"standard\" for a non-vegan cookie or \"nogluten\" for a gluten-free cookie: "
+      prepare_option = gets.chomp
+    end
+    puts "Thank you. We are preparing your cookie:"
+    dessert.preparation_option = prepare_options[prepare_option]
+    dessert.prepare_batter
+    dessert.bake
+    fortune_cookies.push(dessert)
+  end
+end
+
+puts "\nHere is your order:"
+fortune_cookies.each do |fortune_cookie|
+  puts "\n*1 #{fortune_cookie.preparation_option} fortune cookie for a #{fortune_cookie.target_age} year old, #{fortune_cookie.target_language} speaking person."
+  fortune_cookie.tell_fortune(1)
+  end
+
+puts "\nThank you for coming to the Fortune Cookie Factory!\n"
