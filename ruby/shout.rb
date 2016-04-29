@@ -6,3 +6,6 @@ module Shout
     words + "!!!" + " :)" + " :)" + " :)" + " :)" + " :)"
   end
 end
+
+puts Shout.yell_hapilly("Chocolate")
+puts Shout.yell_angrily("No chocolate left")
