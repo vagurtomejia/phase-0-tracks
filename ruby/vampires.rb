@@ -30,20 +30,6 @@ def vampire_detection
   employee_needs_insurance = gets.chomp
   employee_needs_insurance = employee_needs_insurance == "y"
 
-  puts "Please list your allergies one at a time and type \"done\" when finished."
-  allergy_is_sunshine = false
-  allergies_are_finished = false
-  until allergy_is_sunshine || allergies_are_finished
-    puts "Your allergy: "
-    allergy = gets.chomp
-    if allergy == "sunshine"
-      allergy_is_sunshine = true
-      return "Probably a vampire."
-    elsif allergy == "done"
-      allergies_are_finished = true
-    end
-  end
-
   current_year = 2016
   computed_age = current_year - employee_birth_year
   correct_age = computed_age == employee_age
@@ -60,7 +46,22 @@ def vampire_detection
   else
     result_of_survey = "Results inconclusive."
   end
-  return result_of_survey
+
+  puts "Please list your allergies one at a time and type \"done\" when finished."
+  allergy_is_sunshine = false
+  allergies_are_finished = false
+  until allergy_is_sunshine || allergies_are_finished
+    puts "Your allergy: "
+    allergy = gets.chomp
+    if allergy == "sunshine"
+      allergy_is_sunshine = true
+      result_of_survey = "Probably a vampire."
+      break
+    elsif allergy == "done"
+      allergies_are_finished = true
+    end
+  end
+  result_of_survey
 end
 
 
