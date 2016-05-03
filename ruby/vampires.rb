@@ -24,11 +24,11 @@ def vampire_detection
 
   puts "Our company cafeteria serves garlic bread. Should we order some for you? (y/n)"
   employee_likes_garlic = gets.chomp
-  employee_likes_garlic == "y" ? employee_likes_garlic = true : employee_likes_garlic = false
+  employee_likes_garlic = employee_likes_garlic == "y"
 
   puts "Would you like to enroll in the company’s health insurance? (y/n)"
   employee_needs_insurance = gets.chomp
-  employee_needs_insurance == "y" ? employee_needs_insurance = true : employee_needs_insurance = false
+  employee_needs_insurance = employee_needs_insurance == "y"
 
   puts "Please list your allergies one at a time and type \"done\" when finished."
   allergy_is_sunshine = false
