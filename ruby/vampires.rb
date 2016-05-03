@@ -24,29 +24,15 @@ def vampire_detection
 
   puts "Our company cafeteria serves garlic bread. Should we order some for you? (y/n)"
   employee_likes_garlic = gets.chomp
-  employee_likes_garlic == "y" ? employee_likes_garlic = true : employee_likes_garlic = false
+  employee_likes_garlic = employee_likes_garlic == "y"
 
   puts "Would you like to enroll in the company’s health insurance? (y/n)"
   employee_needs_insurance = gets.chomp
-  employee_needs_insurance == "y" ? employee_needs_insurance = true : employee_needs_insurance = false
-
-  puts "Please list your allergies one at a time and type \"done\" when finished."
-  allergy_is_sunshine = false
-  allergies_are_finished = false
-  until allergy_is_sunshine || allergies_are_finished
-    puts "Your allergy: "
-    allergy = gets.chomp
-    if allergy == "sunshine"
-      allergy_is_sunshine = true
-      return "Probably a vampire."
-    elsif allergy == "done"
-      allergies_are_finished = true
-    end
-  end
+  employee_needs_insurance = employee_needs_insurance == "y"
 
   current_year = 2016
   computed_age = current_year - employee_birth_year
-  correct_age = (computed_age == employee_age) ? true : false
+  correct_age = computed_age == employee_age
 
   result_of_survey = ""
   if correct_age && employee_likes_garlic && employee_needs_insurance
@@ -60,21 +46,34 @@ def vampire_detection
   else
     result_of_survey = "Results inconclusive."
   end
-  return result_of_survey
+
+  puts "Please list your allergies one at a time and type \"done\" when finished."
+  allergy_is_sunshine = false
+  allergies_are_finished = false
+  until allergy_is_sunshine || allergies_are_finished
+    puts "Your allergy: "
+    allergy = gets.chomp
+    if allergy == "sunshine"
+      allergy_is_sunshine = true
+      result_of_survey = "Probably a vampire."
+      break
+    elsif allergy == "done"
+      allergies_are_finished = true
+    end
+  end
+  result_of_survey
 end
 
 
 #DRIVER CODE
 puts "How many employees do you want to process?"
 nb_employees = gets.chomp.to_i
-nb_current_employee = 1
 
-while nb_current_employee <= nb_employees
-  puts "Vampire-detection survey for the employee number #{nb_current_employee}"
+nb_employees.times do |number|
+  puts "Vampire-detection survey for the employee number #{number + 1}"
   puts "**************************************************"
   detection_result = vampire_detection
   puts "\nOur vampire-detection program indicates the following result for this employee: #{detection_result}\n\n"
-  nb_current_employee += 1
 end
 puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends! :-)"
 
