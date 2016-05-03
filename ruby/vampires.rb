@@ -67,14 +67,12 @@ end
 #DRIVER CODE
 puts "How many employees do you want to process?"
 nb_employees = gets.chomp.to_i
-nb_current_employee = 1
 
-while nb_current_employee <= nb_employees
-  puts "Vampire-detection survey for the employee number #{nb_current_employee}"
+nb_employees.times do |number|
+  puts "Vampire-detection survey for the employee number #{number + 1}"
   puts "**************************************************"
   detection_result = vampire_detection
   puts "\nOur vampire-detection program indicates the following result for this employee: #{detection_result}\n\n"
-  nb_current_employee += 1
 end
 puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends! :-)"
 
