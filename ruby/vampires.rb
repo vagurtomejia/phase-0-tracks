@@ -46,7 +46,7 @@ def vampire_detection
 
   current_year = 2016
   computed_age = current_year - employee_birth_year
-  correct_age = (computed_age == employee_age) ? true : false
+  correct_age = computed_age == employee_age
 
   result_of_survey = ""
   if correct_age && employee_likes_garlic && employee_needs_insurance
