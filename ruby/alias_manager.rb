@@ -36,12 +36,10 @@ end
 #generate_alias method: takes a spy's real name  and creates and return a fake name
 #"Felicia Torres" will return "Vussit Gimodoe"
 def generate_alias(real_name)
-
   # split full name into first_name and last_name
   names = real_name.split(" ")
   new_first_name = encode_name(names.first)
   new_last_name = encode_name(names.last)
-
   # join last and first name (swapping them)
   alias_name = new_last_name + ' ' + new_first_name
 end
