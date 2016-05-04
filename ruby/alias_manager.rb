@@ -39,15 +39,11 @@ def generate_alias(real_name)
 
   # split full name into first_name and last_name
   names = real_name.split(" ")
-  first_name = names.first
-  last_name = names.last
-
-  new_first_name = encode_name(first_name)
-  new_last_name = encode_name(last_name)
+  new_first_name = encode_name(names.first)
+  new_last_name = encode_name(names.last)
 
   # join last and first name (swapping them)
   alias_name = new_last_name + ' ' + new_first_name
-  return alias_name
 end
 
 #DRIVER CODE
