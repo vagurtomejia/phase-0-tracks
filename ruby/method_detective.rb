@@ -14,7 +14,6 @@ end
 #DRIVER CODE
 puts "Mr prosecutor, you know that some methods have been roaming around causing trouble in the last few weeks! I have found the suspects and I bring you here the evidence for you to be able to condemn and compensate the poor strings, victims of all those awfull crimes! \n\n"
 
-
 # "iNvEsTiGaTiOn".<???>
 # => “InVeStIgAtIoN”
 #suspects: swapcase → new_str
@@ -25,7 +24,7 @@ diplay_suspect_method("swapcase! → str or nil", "\"iNvEsTiGaTiOn\".swapcase!")
 puts "iNvEsTiGaTiOn".swapcase!
 
 
-# “zom”.<???>
+# "zom".<???>
 # => “zoom”
 #suspects: gsub(pattern, replacement) → new_str
 #AND gsub!(pattern, replacement) → str or nil
@@ -163,9 +162,10 @@ diplay_suspect_method("each_codepoint → an_enumerator","puts \"z\".each_codepo
 puts "z".each_codepoint.first
 
 
-#"How many times does the letter ‘a’ appear in this string?".<???>
+#"How many times does the letter 'a' appear in this string?".<???>
 #=> 4
 #suspect:
 #count([other_str]+) → fixnum
 diplay_suspect_method("count([other_str]+) → fixnum","\"How many times does the letter ‘a’ appear in this string?\".count \"a\"")
 puts "How many times does the letter ‘a’ appear in this string?".count "a"
+
