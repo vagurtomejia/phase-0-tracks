@@ -36,18 +36,12 @@ end
 #generate_alias method: takes a spy's real name  and creates and return a fake name
 #"Felicia Torres" will return "Vussit Gimodoe"
 def generate_alias(real_name)
-
   # split full name into first_name and last_name
   names = real_name.split(" ")
-  first_name = names.first
-  last_name = names.last
-
-  new_first_name = encode_name(first_name)
-  new_last_name = encode_name(last_name)
-
+  new_first_name = encode_name(names.first)
+  new_last_name = encode_name(names.last)
   # join last and first name (swapping them)
   alias_name = new_last_name + ' ' + new_first_name
-  return alias_name
 end
 
 #DRIVER CODE
@@ -56,7 +50,7 @@ puts "Hello, brave agent! And welcome to Fake-Name-Generator 1.0!"
 alias_names = {}
 user_answer = ""
 while user_answer != "quit" do
-  puts "\nWhat is your real name?"
+  puts "\nWhat is your real name? (type \'quit\' to quit the program)"
   user_answer = gets.chomp
   if user_answer.match(/^[[:alpha:][:blank:]]+$/) == nil
     puts "Please enter a REAL real name, really!"
@@ -67,6 +61,6 @@ while user_answer != "quit" do
   end
 end
 
-puts "\nJust to be sure you will not forget (not that those names would be difficult to remeber of course!): "
+puts "\nJust to be sure you will not forget (not that those names would be difficult to remember of course!): "
 alias_names.each { |real_name, alias_name| puts "The real name of #{alias_name} is #{real_name}." }
 puts "\nGood bye and thank you for using Fake-Name-Generator 1.0!"
