@@ -27,9 +27,25 @@ class Santa
   end
 end
 
+#TEST CODE
+
+# carlos = Santa.new('N/A', 'Latino')
+
+# carlos.speak
+
+# carlos.eat_milk_and_cookies('burrito')
+
+# p carlos.age
+# carlos.celebrate_birthday
+# p carlos.age
+
+# p carlos.get_mad_at('Rudolph')
+
+
+
 example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
 example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
-1.times do |i|
+100.times do |i|
   santa =  Santa.new(example_genders.sample, example_ethnicities.sample)
   santa.age = rand(140)
   puts "Santa number #{i + 1} is #{santa.age} years old, #{santa.gender}, #{santa.ethnicity} ."
