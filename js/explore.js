@@ -3,8 +3,8 @@
 // Method reverse
 // input: a string
 // output: the reversed string
-// START reverse
 function reverse(string) {
+
   //create reversed_string, a new empty string
   var reversed_string = '';
   //FOR EACH char in string starting from the end
@@ -12,14 +12,15 @@ function reverse(string) {
     //add it to reversed_string
     reversed_string += string[i];
     }
-  //return reversed_string
+  //RETURN reversed_string
   return reversed_string;
-// END reverse
 }
 
 //TEST CODE
+
 //console.log(reverse("hello") == "olleh");
-likeJavascript = true;
 reversedWord = reverse("javascript");
+
+likeJavascript = true;
 if (likeJavascript)
   console.log(reversedWord);
