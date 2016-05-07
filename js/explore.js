@@ -18,4 +18,8 @@ function reverse(string) {
 }
 
 //TEST CODE
-console.log(reverse("hello") == "olleh");
+//console.log(reverse("hello") == "olleh");
+likeJavascript = true;
+reversedWord = reverse("javascript");
+if (likeJavascript)
+  console.log(reversedWord);
