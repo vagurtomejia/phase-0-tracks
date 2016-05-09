@@ -1,3 +1,5 @@
+//BUSINESS LOGIC
+
 /*longestWord*/
 //input: phrasesArray, an array of words or phrases
 //output: the longest word in phrasesArray
@@ -27,6 +29,7 @@ function longestWord(phrasesArray) {
   // RETURN the phrase of phrases_array stocked at index number max_index
     return phrasesArray[maxIndex];
 }
+
 
 /*findMatch*/
 //inputs: object1, object2
@@ -72,13 +75,53 @@ function findMatch(object1, object2) {
 }
 
 
+/*buildRandomString*/
+//input: length, the length of the wanted string
+//output: random string with a minimum of 1 letter and a maximum of 10 letters.
+
+function buildRandomString(length) {
+  //declare and initialize a string of the alphabet caracters
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  //declare an empty result string
+  var resultString = '';
+  //REPEAT length times
+  for (var i = 0; i <length; i++) {
+    //add a random character to the result string
+    resultString += alphabet[Math.round(Math.random() * (alphabet.length - 1))];
+    }
+  //return the result string
+  return resultString;
+}
+
+
+/*buildArray*/
+//input: length, the length of the wanted array
+//output: array of strings of the given length
+
+function buildArray(length) {
+  //declare a result array
+  var resultArray = [];
+  //REPEAT length times
+  for (var i = 0; i <length; i++) {
+    //generate randNumber, a random number between 0 and 10
+    var randNumber = Math.floor(Math.random() * 10) + 1;
+    //generate randString, a random string of length randNumber
+    var randString = buildRandomString(randNumber);
+    //add the string to the result array
+    resultArray.push(randString);
+    }
+  return resultArray;
+}
+
 
 
 //TEST CODE
 //longestWord
+console.log("----Testing longestWord----");
 console.log(longestWord(["long phrase","longest phrase","longer phrase"]));
 
 //findMatch
+console.log("----Testing findMatch----");
 person1 = {name: "Steven", age: 54};
 person2 = {name: "Tamir", age: 54};
 console.log(findMatch(person1, person2));
@@ -88,3 +131,13 @@ console.log(findMatch(person1, person3));
 
 car1 = {brand: "Seat", model: "Ibiza"};
 console.log(findMatch(person1, car1));
+
+//buildArray & longestWord
+console.log("----Testing buildArray & longestWord----");
+for (var i = 0; i < 10; i++) {
+  //generate randNumber, a random number between 0 and 10
+  var randNumber = Math.floor(Math.random() * 10) + 1;
+  var testArray = buildArray(randNumber);
+  var word = longestWord(testArray);
+  console.log(word);
+}
