@@ -1,4 +1,4 @@
-//longestWord
+/*longestWord*/
 //input: phrasesArray, an array of words or phrases
 //output: the longest word in phrasesArray
 //example: phrasesArray = ["long phrase","longest phrase","longer phrase"] => output = "longest phrase"
@@ -28,30 +28,63 @@ function longestWord(phrasesArray) {
     return phrasesArray[maxIndex];
 }
 
-//findMatch
+/*findMatch*/
 //inputs: object1, object2
 //outputs: true if the objects share at least one key-value pair. //         false if no pairs match
 //example: object1 = {name: "Steven", age: 54} and object2 = {name: "Tamir", age: 54} => output = true
 
-// declare a keyHasMatch variable
-// FOR EACH key1 in object1
-//   set keyHasMatch to false
-//   FOR EACH key2 in object2 OR UNTIL a match is found
-//     compare key1 and key2
-//     IF key1 equals key2
-//       compare value1 and value2
-//       IF value1 equals value2
-//         return true
-//       ELSE
-//         set keyHasMatch to true
-// return false
+function findMatch(object1, object2) {
 
+  //declare a keyHasMatch variable
+  var keyHasMatch;
+  //FOR EACH key1 in object1
+  object1Keys = Object.keys(object1);
+
+  for(var ind1 = 0; ind1 < object1Keys.length; ind1++) {
+
+    key1 = object1Keys[ind1];
+    //set keyHasMatch to false
+    keyHasMatch = false;
+    //FOR EACH key2 in object2 OR UNTIL a match is found
+    object2Keys = Object.keys(object2);
+
+    for(var ind2 = 0; ind2 < object2Keys.length && !keyHasMatch; ind2++) {
+
+      key2 = object2Keys[ind2];
+
+      //compare key1 and key2
+      //IF key1 equals key2
+      if(key1 == key2) {
+        //compare value1 and value2
+        //IF value1 equals value2
+        if(object1[key1] == object2[key2]) {
+          //return true
+          return true;
+          } else {
+          //ELSE set keyHasMatch to true
+          keyHasMatch = true;
+        }
+      }
+    }
+  }
+  //return false
+  return false;
+}
 
 
 
 
 //TEST CODE
+//longestWord
 console.log(longestWord(["long phrase","longest phrase","longer phrase"]));
 
-//findMatch({name: "Steven", age: 54}, {name: "Tamir", age: 54});
+//findMatch
+person1 = {name: "Steven", age: 54};
+person2 = {name: "Tamir", age: 54};
+console.log(findMatch(person1, person2));
 
+person3 = {name: "Tamir", age: 38};
+console.log(findMatch(person1, person3));
+
+car1 = {brand: "Seat", model: "Ibiza"};
+console.log(findMatch(person1, car1));
