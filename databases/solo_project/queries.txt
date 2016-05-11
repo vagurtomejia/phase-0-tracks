@@ -1,0 +1,89 @@
+Release 2
+*********
+*Q1*
+SELECT * FROM Person;
+
+idPerson    namePerson            agePerson   birthdayPerson  idMaritalStatus
+----------  --------------------  ----------  --------------  ---------------
+1           Tecumseh Ahtahkakoop  36          19800717        2              
+2           Jiang Ya              46          19700412        3              
+3           Surendra Mukul        16          20000101        1              
+4           Ivanka Ruza           30          19860920        1              
+5           Edmundo Gracia        35          19810308        2  
+
+*Q2*
+UPDATE Person SET idMaritalStatus=2 WHERE namePerson="Ivanka Ruza";
+
+*Q3*
+SELECT * FROM Person, MaritalStatus WHERE Person.idMaritalStatus=MaritalStatus.idMaritalStatus;  
+
+idPerson    namePerson            agePerson   birthdayPerson  idMaritalStatus  idMaritalStatus  descriptionMaritalStatus
+----------  --------------------  ----------  --------------  ---------------  ---------------  ------------------------
+1           Tecumseh Ahtahkakoop  36          19800717        2                2                married                 
+2           Jiang Ya              46          19700412        3                3                separated               
+3           Surendra Mukul        16          20000101        1                1                single                  
+4           Ivanka Ruza           30          19860920        2                2                married                 
+5           Edmundo Gracia        35          19810308        2                2                married               
+
+
+*Q4*
+SELECT Person.namePerson, Person.agePerson, Person.birthdayPerson, MaritalStatus.descriptionMaritalStatus FROM Person JOIN MaritalStatus ON Person.idMaritalStatus = MaritalStatus.idMaritalStatus;
+
+namePerson            agePerson   birthdayPerson  descriptionMaritalStatus
+--------------------  ----------  --------------  ------------------------
+Tecumseh Ahtahkakoop  36          19800717        married                 
+Jiang Ya              46          19700412        separated               
+Surendra Mukul        16          20000101        single                  
+Ivanka Ruza           30          19860920        married                 
+Edmundo Gracia        35          19810308        married      
+
+
+*Q5*
+DELETE FROM Person WHERE agePerson > 40;
+
+
+
+Release 3
+*********
+
+SELECT Person.namePerson, Person.agePerson, Person.birthdayPerson, MaritalStatus.descriptionMaritalStatus 
+FROM Person
+LEFT JOIN MaritalStatus
+ON Person.idMaritalStatus = MaritalStatus.idMaritalStatus;
+
+
+namePerson            agePerson   birthdayPerson  descriptionMaritalStatus
+--------------------  ----------  --------------  ------------------------
+Tecumseh Ahtahkakoop  36          19800717        married                 
+Surendra Mukul        16          20000101        single                  
+Ivanka Ruza           30          19860920        married                 
+Edmundo Gracia        35          19810308        married 
+
+-------------
+
+SELECT Person.namePerson, Person.agePerson, Person.birthdayPerson, MaritalStatus.descriptionMaritalStatus 
+FROM Person
+CROSS JOIN MaritalStatus
+ON Person.idMaritalStatus = MaritalStatus.idMaritalStatus;
+
+namePerson            agePerson   birthdayPerson  descriptionMaritalStatus
+--------------------  ----------  --------------  ------------------------
+Tecumseh Ahtahkakoop  36          19800717        married                 
+Surendra Mukul        16          20000101        single                  
+Ivanka Ruza           30          19860920        married                 
+Edmundo Gracia        35          19810308        married  
+
+-------------
+
+SELECT Person.namePerson, Person.agePerson, Person.birthdayPerson, MaritalStatus.descriptionMaritalStatus 
+FROM Person
+NATURAL JOIN MaritalStatus;
+
+
+namePerson            agePerson   birthdayPerson  descriptionMaritalStatus
+--------------------  ----------  --------------  ------------------------
+Tecumseh Ahtahkakoop  36          19800717        married                 
+Surendra Mukul        16          20000101        single                  
+Ivanka Ruza           30          19860920        married                 
+Edmundo Gracia        35          19810308        married  
+
