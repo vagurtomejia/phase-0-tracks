@@ -40,3 +40,50 @@ Edmundo Gracia        35          19810308        married
 
 *Q5*
 DELETE FROM Person WHERE agePerson > 40;
+
+
+
+Release 3
+*********
+
+SELECT Person.namePerson, Person.agePerson, Person.birthdayPerson, MaritalStatus.descriptionMaritalStatus 
+FROM Person
+LEFT JOIN MaritalStatus
+ON Person.idMaritalStatus = MaritalStatus.idMaritalStatus;
+
+
+namePerson            agePerson   birthdayPerson  descriptionMaritalStatus
+--------------------  ----------  --------------  ------------------------
+Tecumseh Ahtahkakoop  36          19800717        married                 
+Surendra Mukul        16          20000101        single                  
+Ivanka Ruza           30          19860920        married                 
+Edmundo Gracia        35          19810308        married 
+
+-------------
+
+SELECT Person.namePerson, Person.agePerson, Person.birthdayPerson, MaritalStatus.descriptionMaritalStatus 
+FROM Person
+CROSS JOIN MaritalStatus
+ON Person.idMaritalStatus = MaritalStatus.idMaritalStatus;
+
+namePerson            agePerson   birthdayPerson  descriptionMaritalStatus
+--------------------  ----------  --------------  ------------------------
+Tecumseh Ahtahkakoop  36          19800717        married                 
+Surendra Mukul        16          20000101        single                  
+Ivanka Ruza           30          19860920        married                 
+Edmundo Gracia        35          19810308        married  
+
+-------------
+
+SELECT Person.namePerson, Person.agePerson, Person.birthdayPerson, MaritalStatus.descriptionMaritalStatus 
+FROM Person
+NATURAL JOIN MaritalStatus;
+
+
+namePerson            agePerson   birthdayPerson  descriptionMaritalStatus
+--------------------  ----------  --------------  ------------------------
+Tecumseh Ahtahkakoop  36          19800717        married                 
+Surendra Mukul        16          20000101        single                  
+Ivanka Ruza           30          19860920        married                 
+Edmundo Gracia        35          19810308        married  
+
