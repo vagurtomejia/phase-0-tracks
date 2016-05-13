@@ -3,8 +3,17 @@
 
 #BUSINESS LOGIC
 
-#create the database instance
-#set rows return type to hash
+class PolyglotQuotinator
+
+  attr_reader :database, :language
+
+  def initialize(language)
+    @language = language
+    #create the database instance
+    @database = SQLite3::Database.new( "polyglot_quotinator.db" )
+    #set rows return type to hash
+    @database.result_as_hash = true
+  end
 
 #create the books table if not already exist
 
@@ -12,6 +21,7 @@
 
 #create the quotes table if not already exist
 
+end
 
 #USER INTERFACE
 
