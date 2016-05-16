@@ -136,11 +136,85 @@ class PolyglotQuotinator
     quote
   end
 
+  def insert_book (title, language, nbpages, year, location)
+
+    books_insert_query = "INSERT INTO books (title, language, pages_number, year, city_publication) VALUES (?, ?, ?, ?, ?)"
+
+    @database.execute(books_insert_query, [title, language, nbpages, year, location])
+
+  end
+
+  def insert_author (first_name, last_name, gender, birthday, nationality)
+
+    authors_insert_query = "INSERT INTO authors (first_name, last_name, gender, birthday, nationality) VALUES (?, ?, ?, ?, ?)"
+
+    @database.execute(authors_insert_query, [first_name, last_name, gender, birthday, nationality])
+
+  end
+
+  def insert_quote (quote, from_page, to_page, from_line, to_line, subject, book_id, author_id)
+
+    quotes_insert_query = "INSERT INTO quotes (quote, from_page, to_page, from_line, to_line, subject, book_id, author_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+
+    @database.execute(quotes_insert_query, [quote, from_page, to_page, from_line, to_line, subject, book_id, author_id])
+
+  end
+
+
+  def populate_books_table
+
+    books = [
+              {title: "El Sendero Sagrado", language: "ES", pages_number: 133, year: 2004, city_publication: "Medellín, Colombia"},
+              {title: "The surprising purpose of anger", language:"EN", pages_number: 44, year: 2005, city_publication: "United States of America"}
+            ]
+    books.each do |book|
+      insert_book(book[:title], book[:language], book[:pages_number], book[:year], book[:location])
+
+    end
+
+  end
+
+  def populate_authors_table
+
+    authors = [
+              {first_name: "Sant Kirpal", last_name: "Singh Ji Maharaj", gender: "spirituality", birthday: "18940206", nationality: "Indian"},
+              {first_name: "Marshall B.", last_name: "Rosenberg, PH.D.", gender: "spirituality, communication", birthday: "19341006", nationality: "American"}
+            ]
+    authors.each do |author|
+      insert_author(author[:first_name], author[:last_name], author[:gender], author[:birthday], author[:nationality])
+    end
+
+  end
+
+
+  def populate_quotes_table
+
+    quotes = [
+              {quote: "Ahora que nuestro destino nos ha traido aqui, como podemos sacar el mejor provecho de la vida humana? No deberiamos plantar mas semillas. Cualquier cosa que suceda en la vida debido a acciones pasadas, deberia ser soportado con alegria. La felicidad y la desdicha vendran pero el discipulo nunca deberia sentirse descorazonado.", from_page: 102, to_page: 102, from_line: 3, to_line: 9, subject: "karma, discipulo, destino", book_id: 1, author_id: 1},
+              {quote: "How I choose to look at that situation will greatly affect whether I have the power to change it or make matters worse.", from_page: 34, to_page: 34, from_line: 2, to_line: 4, subject: "NVC", book_id: 2, author_id: 2},
+              {quote: "There's not a thing another person can do that can make us angry.", from_page: 34, to_page: 34, from_line: 5, to_line: 6, subject: "NVC", book_id: 2, author_id: 2},
+              {quote: "I don't think we get angry because our need aren't getting met. I think we get angry because we have judgments about others.", from_page: 34, to_page: 34, from_line: 9, to_line: 11, subject: "NVC", book_id: 2, author_id: 2}
+            ]
+    quotes.each do |quote|
+      insert_quote(quote[:quote], quote[:from_page], quote[:to_page], quote[:from_line], quote[:to_line], quote[:subject], quote[:book_id], quote[:author_id])
+
+    end
+
+  end
+
+  def populate_all_tables
+
+    populate_books_table
+    populate_authors_table
+    populate_quotes_table
+
+  end
+
 end
 
 #TEST CODE
-quotinator = PolyglotQuotinator.new("ES")
-puts quotinator.get_random_quote
+# quotinator = PolyglotQuotinator.new("EN")
+# puts quotinator.get_random_quote
 
 #USER INTERFACE
 
@@ -164,4 +238,7 @@ puts quotinator.get_random_quote
 
 #if the user input is 4
   #print a random quote from the database
+
+
+
 
