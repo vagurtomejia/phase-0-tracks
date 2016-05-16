@@ -5,9 +5,9 @@ describe PolyglotQuotinator do
 
   let(:quotinator) { PolyglotQuotinator.new("spanish") }
 
-  # it "can add a book" do
-  #   expect(quotinator.add_book).to eq true
-  # end
+  it "can add a book" do
+    expect(quotinator.add_book).to eq true
+  end
 
   # it "can add an author" do
   #   expect(quotinator.add_author).to eq true
