@@ -90,10 +90,6 @@ class PolyglotQuotinator
 
   end
 
-  # def populate_all_tables
-
-
-  # end
 
   def fake_populate_all_tables
 
@@ -121,9 +117,15 @@ class PolyglotQuotinator
   def get_random_quote
 
     quote = ""
-    #quotes_select_id_query = "SELECT id FROM quotes;"
-    quotes_select_id_query = "SELECT quotes.id FROM quotes JOIN books ON quotes.book_id = books.id WHERE books.language = ?"
-    quotes_ids = @database.execute(quotes_select_id_query, [@language])
+
+    if @language == "all"
+      quotes_select_id_query = "SELECT id FROM quotes;"
+      quotes_ids = @database.execute(quotes_select_id_query)
+    else
+      quotes_select_id_query = "SELECT quotes.id FROM quotes JOIN books ON quotes.book_id = books.id WHERE books.language = ?"
+      quotes_ids = @database.execute(quotes_select_id_query, [@language])
+    end
+
     if !quotes_ids.empty?
       id = quotes_ids.sample["id"]
 
@@ -165,7 +167,8 @@ class PolyglotQuotinator
 
     books = [
               {title: "El Sendero Sagrado", language: "ES", pages_number: 133, year: 2004, city_publication: "Medellín, Colombia"},
-              {title: "The surprising purpose of anger", language:"EN", pages_number: 44, year: 2005, city_publication: "United States of America"}
+              {title: "The surprising purpose of anger", language:"EN", pages_number: 44, year: 2005, city_publication: "United States of America"},
+              {title: "L\'Esprit et la pensée", language:"FR", pages_number: 0, year: 1993, city_publication: "Paris"}
             ]
     books.each do |book|
       insert_book(book[:title], book[:language], book[:pages_number], book[:year], book[:location])
@@ -178,7 +181,8 @@ class PolyglotQuotinator
 
     authors = [
               {first_name: "Sant Kirpal", last_name: "Singh Ji Maharaj", gender: "spirituality", birthday: "18940206", nationality: "Indian"},
-              {first_name: "Marshall B.", last_name: "Rosenberg, PH.D.", gender: "spirituality, communication", birthday: "19341006", nationality: "American"}
+              {first_name: "Marshall B.", last_name: "Rosenberg, PH.D.", gender: "psychology, communication", birthday: "19341006", nationality: "American"},
+              {first_name: "Jiddu", last_name: "Krishnamurti", gender: "philosophy", birthday: "18950512", nationality: "Indian"}
             ]
     authors.each do |author|
       insert_author(author[:first_name], author[:last_name], author[:gender], author[:birthday], author[:nationality])
@@ -191,9 +195,14 @@ class PolyglotQuotinator
 
     quotes = [
               {quote: "Ahora que nuestro destino nos ha traido aqui, como podemos sacar el mejor provecho de la vida humana? No deberiamos plantar mas semillas. Cualquier cosa que suceda en la vida debido a acciones pasadas, deberia ser soportado con alegria. La felicidad y la desdicha vendran pero el discipulo nunca deberia sentirse descorazonado.", from_page: 102, to_page: 102, from_line: 3, to_line: 9, subject: "karma, discipulo, destino", book_id: 1, author_id: 1},
+              {quote: "Un nino que esta aprendiendo a leer, lee unas pocas lineas y pronto las olvida. Tiene que leerlas una y otra vez, pero despues de una gran lucha con el aprendizaje, puede ser que algun dia sea capaz de escribir un libro. Cada Santo tiene su pasado y cada pecador  un futuro.", from_page: 96, to_page: 97, from_line: 12, to_line: 2, subject: "paciencia, perseverancia", book_id: 1, author_id: 1},
+              {quote: "El ser es el amigo del ser y el ser es el enemigo del ser. La mente, actuando como esclava de los sentidos, corriendo tras de los objetos de los sentidos, se degrada a si misma.", from_page: 19, to_page: 20, from_line: 30, to_line: 3, subject: "paciencia, perseverancia", book_id: 1, author_id: 1},
               {quote: "How I choose to look at that situation will greatly affect whether I have the power to change it or make matters worse.", from_page: 34, to_page: 34, from_line: 2, to_line: 4, subject: "NVC", book_id: 2, author_id: 2},
               {quote: "There's not a thing another person can do that can make us angry.", from_page: 34, to_page: 34, from_line: 5, to_line: 6, subject: "NVC", book_id: 2, author_id: 2},
-              {quote: "I don't think we get angry because our need aren't getting met. I think we get angry because we have judgments about others.", from_page: 34, to_page: 34, from_line: 9, to_line: 11, subject: "NVC", book_id: 2, author_id: 2}
+              {quote: "I don't think we get angry because our need aren't getting met. I think we get angry because we have judgments about others.", from_page: 34, to_page: 34, from_line: 9, to_line: 11, subject: "NVC", book_id: 2, author_id: 2},
+              {quote: "L’amour est un tout indissociable et perpétuellement neuf.", from_page: 39, to_page: 39, from_line: 0, to_line: 0, subject: "phylosophy, love", book_id: 3, author_id: 3},
+              {quote: "Porter sur toute chose un regard lucide, sans faire intervenir les souvenirs d’hier: alors, la vie cesse d’être problématique.", from_page: 40, to_page: 40, from_line: 0, to_line: 0, subject: "phylosophy, present, mind", book_id: 3, author_id: 3},
+              {quote: "Nos intuitions peuvent être l’expression de nos espoirs, de nos craintes, de notre amertume, de nos attentes, de nos souhaits.", from_page: 44, to_page: 44, from_line: 0, to_line: 0, subject: "phylosophy, intuition, mind", book_id: 3, author_id: 3}
             ]
     quotes.each do |quote|
       insert_quote(quote[:quote], quote[:from_page], quote[:to_page], quote[:from_line], quote[:to_line], quote[:subject], quote[:book_id], quote[:author_id])
@@ -240,17 +249,22 @@ end
   #print a random quote from the database
 
 
-languages = ["ES", "FR", "EN"]
+languages = ["ES", "FR", "EN", "all"]
 
 loop do
 
-  puts "\nWhich is your language (ES, FR, EN or quit)?"
+  puts "\nChoose the language for the quote of the day (ES, FR, EN, all or quit)?"
   user_language = gets.chomp
   break if user_language == "quit"
   if languages.include?(user_language)
-    quotinator = PolyglotQuotinator.new("EN")
-    random_quote = quotinator.get_random_quote #not working by language anymore - recent bug to fix
-    puts "Here is your quote of the day: \n #{random_quote}"
+    quotinator = PolyglotQuotinator.new(user_language)
+    random_quote = quotinator.get_random_quote
+    if random_quote.empty?
+      puts "There are no quotes for this language"
+    else
+      puts "Here is your quote of the day: \n #{random_quote}"
+    end
+
   else
     puts "#{user_language} is not a valid language."
   end
