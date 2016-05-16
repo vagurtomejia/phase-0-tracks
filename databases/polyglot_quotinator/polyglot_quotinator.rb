@@ -12,8 +12,12 @@ class PolyglotQuotinator
 
   def initialize(language)
     @language = language
+
     #create the database instance
     @database = SQLite3::Database.new( "polyglot_quotinator.db" )
+
+    #set rows return type to hash for the database
+    @database.results_as_hash = true
 
     #create the books table if not already exist
     create_books_table
@@ -115,15 +119,14 @@ class PolyglotQuotinator
   def get_random_quote
 
     quote = ""
-    #set rows return type to hash
-    @database.results_as_hash = true
-    quotes_select_id_query = "SELECT id FROM quotes;"
-    quotes_ids = @database.execute(quotes_select_id_query)
+    #quotes_select_id_query = "SELECT id FROM quotes;"
+    quotes_select_id_query = "SELECT quotes.id FROM quotes JOIN books ON quotes.book_id = books.id WHERE books.language = ?"
+    quotes_ids = @database.execute(quotes_select_id_query, [@language])
     if !quotes_ids.empty?
       id = quotes_ids.sample["id"]
 
-      quote_select_by_id = "SELECT quote FROM quotes WHERE id = ?"
-      result_quote = @database.execute(quote_select_by_id, [id])
+      quote_select_by_id_query = "SELECT quote FROM quotes WHERE id = ?"
+      result_quote = @database.execute(quote_select_by_id_query, [id])
       if !result_quote.empty?
         quote = result_quote[0]["quote"]
       end
@@ -134,7 +137,7 @@ class PolyglotQuotinator
 end
 
 #TEST CODE
-quotinator = PolyglotQuotinator.new("spanish")
+quotinator = PolyglotQuotinator.new("ES")
 puts quotinator.get_random_quote
 
 #USER INTERFACE
