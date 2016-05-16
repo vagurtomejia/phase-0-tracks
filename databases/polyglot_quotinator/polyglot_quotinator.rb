@@ -14,8 +14,6 @@ class PolyglotQuotinator
     @language = language
     #create the database instance
     @database = SQLite3::Database.new( "polyglot_quotinator.db" )
-    #set rows return type to hash
-    @database.results_as_hash = true
 
     #create the books table if not already exist
     create_books_table
@@ -27,7 +25,7 @@ class PolyglotQuotinator
     create_quotes_table
 
     #populate books, authors and quotes tables if needed
-    fake_populate_all_tables
+    #fake_populate_all_tables
     #populate_all_tables
 
   end
@@ -114,11 +112,30 @@ class PolyglotQuotinator
     end
   end
 
+  def get_random_quote
+
+    quote = ""
+    #set rows return type to hash
+    @database.results_as_hash = true
+    quotes_select_id_query = "SELECT id FROM quotes;"
+    quotes_ids = @database.execute(quotes_select_id_query)
+    if !quotes_ids.empty?
+      id = quotes_ids.sample["id"]
+
+      quote_select_by_id = "SELECT quote FROM quotes WHERE id = ?"
+      result_quote = @database.execute(quote_select_by_id, [id])
+      if !result_quote.empty?
+        quote = result_quote[0]["quote"]
+      end
+    end
+    quote
+  end
+
 end
 
 #TEST CODE
 quotinator = PolyglotQuotinator.new("spanish")
-p quotinator.language
+puts quotinator.get_random_quote
 
 #USER INTERFACE
 

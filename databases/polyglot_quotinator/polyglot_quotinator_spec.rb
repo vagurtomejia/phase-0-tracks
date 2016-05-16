@@ -17,8 +17,8 @@ describe PolyglotQuotinator do
   #   expect(quotinator.add_quote).to eq true
   # end
 
-  # it "can get a random quote" do
-  #   expect(quotinator.get_random_quote.class.name).to eq "String"
-  # end
+  it "can get a random quote" do
+    expect(quotinator.get_random_quote.class.name).to eq "String"
+  end
 
 end
