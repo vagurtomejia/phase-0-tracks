@@ -99,19 +99,21 @@ class PolyglotQuotinator
 
     books_insert_query = "INSERT INTO books (title, language, pages_number, year, city_publication) VALUES (?, ?, ?, ?, ?)"
 
-    5.times do
-      @database.execute(books_insert_query, [Faker::Book.title, "ES", Faker::Number.between(1, 400), Faker::Number.between(1800, 2016), Faker::Address.city])
+    languages = ["ES", "FR", "EN"]
+
+    20.times do
+      @database.execute(books_insert_query, [Faker::Book.title, languages.sample, Faker::Number.between(1, 400), Faker::Number.between(1800, 2016), Faker::Address.city])
     end
 
     authors_insert_query = "INSERT INTO authors (first_name, last_name, gender, birthday, nationality) VALUES (?, ?, ?, ?, ?)"
 
-    5.times do
+    20.times do
       @database.execute(authors_insert_query, [Faker::Name.first_name, Faker::Name.last_name, Faker::Book.genre, Faker::Date.between(1800, 2000), "ecuadorian"])
     end
 
     quotes_insert_query = "INSERT INTO quotes (quote, from_page, to_page, from_line, to_line, subject, book_id, author_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
 
-    5.times do
+    20.times do
       @database.execute(quotes_insert_query, [Faker::Lorem.sentence(3,true), Faker::Number.between(1, 50), Faker::Number.between(51, 100), Faker::Number.between(0, 10), Faker::Number.between(10, 20), Faker::Lorem.word, Faker::Number.between(1, 5), Faker::Number.between(1, 5)])
     end
   end
