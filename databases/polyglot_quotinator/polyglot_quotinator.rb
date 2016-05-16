@@ -248,7 +248,7 @@ loop do
   user_language = gets.chomp
   break if user_language == "quit"
   if languages.include?(user_language)
-    quotinator = PolyglotQuotinator.new("EN")
+    quotinator = PolyglotQuotinator.new(user_language)
     random_quote = quotinator.get_random_quote #not working by language anymore - recent bug to fix
     puts "Here is your quote of the day: \n #{random_quote}"
   else
