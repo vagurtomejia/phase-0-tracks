@@ -218,7 +218,7 @@ end
 
 #USER INTERFACE
 
-#Present to the user the following possibilities:
+#Present to the user the following possibilities (to be implemented in future releases):
 
   #1-add a book
   #2-add an author
@@ -240,5 +240,20 @@ end
   #print a random quote from the database
 
 
+languages = ["ES", "FR", "EN"]
 
+loop do
+
+  puts "\nWhich is your language (ES, FR, EN or quit)?"
+  user_language = gets.chomp
+  break if user_language == "quit"
+  if languages.include?(user_language)
+    quotinator = PolyglotQuotinator.new("EN")
+    random_quote = quotinator.get_random_quote #not working by language anymore - recent bug to fix
+    puts "Here is your quote of the day: \n #{random_quote}"
+  else
+    puts "#{user_language} is not a valid language."
+  end
+
+end
 
