@@ -45,9 +45,20 @@ get '/students/:id' do
   student.to_s
 end
 
-# write a GET route that displays an address
+# write a GET /great_job route that displays an address
 
 get '/contact' do
   "88w Unicorns Road"
 end
 
+
+# write a GET  /great_job route that can take a person's name as a query parameter (not a route parameter) and say "Good job, [person's name]!". If the query parameter is not present, the route simply says "Good job!"
+
+get '/great_job' do
+  name = params[:name]
+  if name
+    "Good job, #{name}!"
+  else
+    "Good job!"
+  end
+end
